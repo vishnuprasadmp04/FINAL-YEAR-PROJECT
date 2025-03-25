@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bcss/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <script defer src="/bjs/bootstrap.bundle.min.js"></script>
+    <title>GOCABBY</title>
+    
+
+</head>
+<body onload="setData()">
+    <form action="/admin/login" method="post" id="loginForm">
+        <div class="container">
+          <div class="row mt-5" style="height: 90vh;">
+            
+            <div class="col-12 col-md-6 offset-md-3 mb-auto mt-auto">
+            <img src="/logo/white.svg" alt="" style="width: 60%;margin-left:20%;margin-bottom: 20px;">
+
+              <div class="login-body">
+                <p class="login-head text-center">Admin Login</p>
+                <input type="text" name="username" class="form-inp" placeholder="USERNAME" id="username">
+                
+                <input type="password" name="password" class="form-inp" placeholder="PASSWORD" id="password">
+                <p class="text-center text-danger"><%=msg%></p>
+                <button type="submit" class="form-btn">LOGIN</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>   
+      
+      <script>
+        document.getElementById('loginForm').addEventListener('submit',function(e){
+          localStorage.setItem('username',document.getElementById('username').value)
+          localStorage.setItem('password',document.getElementById('password').value)
+        })
+  
+  
+        function setData(){
+          document.getElementById('username').value = localStorage.getItem('username')
+          document.getElementById('password').value = localStorage.getItem('password')
+        }
+      </script>
+</body>
+</html>

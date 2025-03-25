@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bcss/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/icofont/icofont.min.css">
+     
+    <script defer src="/bjs/jquery.min.js"></script>
+    <script defer src="/bjs/bootstrap.bundle.min.js"></script>
+    <title>GOCABBY</title>
+    <style>
+        .stat-box{
+            border-radius: 15px;
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+        }
+        .stats-head{
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .stats-count{
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <%- include('../partials/admin-nav') %>
+    <div class="app">
+        <div class="row">
+            <div class="col-12 col-md-3 col-lg-2  order-2 order-md-1">
+                <%- include('../partials/admin-sidebar') %>
+            </div>
+            <div class="col-12 col-lg-9  col-lg-10 order-1 order-md-2">
+                <div class="page-view-area">
+                    <div class="nav-adjust"></div>
+                    <div class="row">
+                        <div class="col-12 col-md-9">
+                            <div class="page-info-div">
+                                <h1 class="page-head">
+                                   Bus Time
+                                </h1>
+                                <p class="mt-2">
+                                    <a class="text-decoration-none text-dark" href="/admin">Home</a>&nbsp;>
+                                    <a class="text-decoration-none text-info" href="#">Bustime</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <p class="text-center"><button class="btn btn-success"  data-toggle="modal" data-target="#todoModal">ADD TIME</button></p>  
+                        </div>
+                        <div class="col-12 table-responsive mt-4">
+                            <table class="table">
+                                <tr>
+                                    <th>Destination</th>
+                                    <th>Time</th>
+                                    <th>Delete</th>
+                                </tr>
+                                <% times.forEach((t)=>{ %>
+                                    <tr>
+                                        <td>
+                                            <%=t.destination%>
+                                        </td>
+                                        <td>
+                                            <%=t.time%>
+                                        </td>
+                                        <td>
+                                            <a href="/admin/deletebus/<%=t.id%>"><button class="btn btn-danger">DELETE</button></a>
+                                        </td>
+            
+                                    </tr>
+                                <% }) %>
+                            </table>
+                        </div>
+                    </div>
+                  
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="todoModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+            
+                <!-- Modal Header -->
+                <div class="modal-header">
+                <h4 class="modal-title">Add Bus Time</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form action="/admin/bustime" method="post">
+                        <div class="form-group">
+                            <label>Destination</label>
+                            <input type="text" class="form-control"  name="destination" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Departure Time</label>
+                            <input type="text" class="form-control"  name="time" required>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success btn-block" type="submit">Add</button>
+                        </div>
+                    </form>
+                </div>
+                
+               
+                
+            </div>
+        </div>
+    </div>
+    <script >
+        document.getElementById('si4').classList.add('sidebar-item-active')
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/bcss/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/user.css">
+    <link rel="stylesheet" href="/icofont/icofont.min.css">
+     
+    <script defer src="/bjs/jquery.min.js"></script>
+    <script defer src="/bjs/bootstrap.bundle.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <title>GOCABBY</title>
+    
+
+  </head>
+  <body class="d-block d-md-none">
+    <div class="user-top-bar">
+      <img src="/images/user-nav.png" alt="" style="width: 100%;">
+    </div>
+   
+    <div class="container" style="padding-top: 100px;">
+      <p class="fancy-text text-center" style="font-weight: 800;font-size: 30px;color: red;">
+       SOS
+      </p>
+    
+    </div>
+    
+    <div class="main-content-body" style="background-color: red;">
+      <p class="fancy-text">
+        Use This Only <br>In Case Of Emergency
+      </p>
+
+      <form action="/sos" method="post">
+        <div class="row">
+          <input type="hidden" name="lat" id="lat">
+          <input type="hidden" name="lon" id="lon">
+
+          <div class="col-10 offset-1">
+            <button type="submit" style="width: 100%;color: red;background-color: black;border-radius: 50%;font-size: 40px;font-weight: 900;padding: 90px 0;text-align: center;">
+              SOS
+            </div>
+          </button>
+        </div>
+      </form>
+      
+     
+    </div>
+
+    <%- include('../partials/user-navbar.ejs') %>
+
+    <script>
+      document.getElementById('bn3').classList.add('nav-element-body-selected')
+      navigator.geolocation.getCurrentPosition(showPosition);
+      function showPosition(position) {
+        document.getElementById('lat').value = position.coords.latitude 
+        document.getElementById('lon').value =position.coords.longitude
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bcss/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/icofont/icofont.min.css">
+  
+    <title>GOCABBY</title>
+
+</head>
+<body>
+    <%- include('../partials/admin-nav') %>
+    <div class="app">
+        <div class="row">
+            <div class="col-12 col-md-3 col-lg-2 order-2 order-md-1">
+                <%- include('../partials/admin-sidebar') %>
+            </div>
+            <div class="col-12 col-md-9 col-lg-10 order-1 order-md-2">
+                
+                <div class="page-view-area">
+                    <div class="nav-adjust"></div>
+
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-7">
+                            <div class="page-info-div">
+                                <h1 class="page-head">
+                                    User Profile
+                                </h1>
+                                <p class="mt-2">
+                                    <a class="text-decoration-none text-dark" href="/admin">Home</a>&nbsp;>
+                                    <a class="text-decoration-none text-dark" href="/admin/users">Users</a>&nbsp;>
+
+                                    <a class="text-decoration-none text-info" href="#">User Profile</a>
+                                </p>
+                            </div>
+                        </div>
+                       
+                    </div>
+                    
+                    <div class="table-responsive mt-1">
+                        <table id="table" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th><%=user.name%></th>
+                                </tr>
+                                <tr>
+                                    <th>Phone</th>
+                                    <th><%=user.phone%></th>
+                                </tr>
+                              
+                                
+                               
+                            </thead>
+                            
+                        </table>
+                    </div>
+                
+                    <h2 class="mt-4">All Rides</h2>
+                    <div class="table-responsive mt-1">
+                        <table id="table" class="table table-bordered table-hover">
+                            <tr>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Sentiment Score</th>
+                                <th>Review</th>
+                            </tr>
+                            <% rides.forEach((r)=>{ %>
+                                <tr>
+                                    <td><%=r.from%></td>
+                                    <td><%=r.to%></td>
+                                    <td><%=r.score%></td>
+                                    <td><%=r.review%></td>
+
+                                </tr>
+                            <% }) %>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+
+    <script src="/bjs/jquery.min.js"></script>
+    <script src="/bjs/bootstrap.bundle.min.js"></script>
+
+    <script >
+        document.getElementById('si2').classList.add('sidebar-item-active')
+    </script>
+</body>
+</html>

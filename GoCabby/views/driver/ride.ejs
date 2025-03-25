@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/bcss/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/user.css">
+    <link rel="stylesheet" href="/icofont/icofont.min.css">
+     
+    <script defer src="/bjs/jquery.min.js"></script>
+    <script defer src="/bjs/bootstrap.bundle.min.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <title>GOCABBY</title>
+    
+  </head>
+  <body class="d-block d-md-none">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-6 col-lg-4 offset-0 offset-md-3 offset-lg-4"></div>
+      </div>
+    </div>
+    <div class="user-top-bar">
+      <img src="/images/user-nav.png" alt="" style="width: 100%;">
+    </div>
+   
+    <div class="container" style="padding-top: 100px;">
+      <p class="fancy-text">
+        Make Sure Your's And Your Customer's Safety
+      </p>
+    </div>
+    <% if(ride){ %>
+      <div class="main-content-body">
+        <p class="fancy-text">
+          Ongoing Ride
+        </p>
+        <div class="ride-card">
+          <table class="table">
+            <tr>
+              <td>From</td>
+              <td><%=ride.from%></td>
+            </tr>
+            <tr>
+              <td>To</td>
+              <td><%=ride.to%></td>
+            </tr>
+            <tr>
+              <td>Pickup</td>
+              <td><%=ride.pickupTime%></td>
+            </tr>
+            <tr>
+              <td>Otp</td>
+              <td>
+                <%=ride.otp%>
+              </td>
+            </tr>
+          </table>
+          
+          
+          <a href="/driver/complete-ride/<%=ride.id%>"><button class="btn btn-outline-success btn-block">RIDE COMPLETED <br>Payment Recieved</button></a>
+        </div>
+      </div>
+    <% }else{ %>
+      <div class="main-content-body">
+        <p class="fancy-text">
+          Ride Requests
+        </p>
+  
+        <% requests.forEach((i)=>{ %>
+          <div class="ride-card mb-4">
+            <table class="table">
+              <tr>
+                <td>From</td>
+                <td><%=i.from%></td>
+              </tr>
+              <tr>
+                <td>To</td>
+                <td><%=i.to%></td>
+              </tr>
+              <tr>
+                <td>Pickup Time</td>
+                <td><%=i.pickupTime%></td>
+              </tr>
+            </table>
+            <a href="/driver/accept-ride/<%=i.id%>"><button type="button" class="btn btn-outline-success">ACCEPT RIDE</button></a>
+          </div>
+        <% }) %>
+        
+        
+      </div>
+    <% } %>
+  
+
+    <%- include('../partials/driver-navbar.ejs') %>
+
+    <script>
+      document.getElementById('bn1').classList.add('nav-element-body-selected')
+    </script>
+  </body>
+</html>

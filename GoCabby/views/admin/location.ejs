@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bcss/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/icofont/icofont.min.css">
+     
+    <script defer src="/bjs/jquery.min.js"></script>
+    <script defer src="/bjs/bootstrap.bundle.min.js"></script>
+    <title>GOCABBY</title>
+    
+</head>
+<body>
+    <%- include('../partials/admin-nav') %>
+    <div class="app">
+        <div class="row">
+            <div class="col-12 col-md-3 col-lg-2  order-2 order-md-1">
+                <%- include('../partials/admin-sidebar') %>
+            </div>
+            <div class="col-12 col-lg-9  col-lg-10 order-1 order-md-2">
+                <div class="page-view-area">
+                    <div class="nav-adjust"></div>
+                    <div class="row">
+                        <div class="col-12 col-md-9">
+                            <div class="page-info-div">
+                                <h1 class="page-head">
+                                    Admin Dashboard
+                                </h1>
+                                <p class="mt-2">
+                                    <a class="text-decoration-none text-dark" href="/admin">Home</a>&nbsp;>
+                                    <a class="text-decoration-none text-dark" href="/admin">SOS</a>&nbsp;>
+
+                                    <a class="text-decoration-none text-info" href="#">View Location</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div id="map" style="height: 600px;width: 100%;"></div>
+
+                    <input type="hidden" id="lat" value="<%=lat%>">
+                    <input type="hidden" id="lon" value="<%=lon%>">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
+    <link href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" rel="stylesheet"/>
+    <script >
+        document.getElementById('si0').classList.add('sidebar-item-active')
+
+        var mapCanvas = document.getElementById('map');
+
+            let lat = document.getElementById('lat').value
+            let lon = document.getElementById('lon').value
+
+            var map = L.map(mapCanvas);
+
+            // Add OSM tile layer to the Leaflet map.
+            L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            // Target's GPS coordinates.
+            var target = L.latLng(lat, lon);
+
+            // Set map's center to target with zoom 14.
+            map.setView(target, 24);
+
+            // Place a marker on the same location.
+            L.marker(target).addTo(map);
+    </script>
+</body>
+</html>

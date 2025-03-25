@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bcss/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/admin.css">
+    <link rel="stylesheet" href="/icofont/icofont.min.css">
+     
+    <script defer src="/bjs/jquery.min.js"></script>
+    <script defer src="/bjs/bootstrap.bundle.min.js"></script>
+    <title>GOCABBY</title>
+    <style>
+        .stat-box{
+            border-radius: 15px;
+            width: 100%;
+            padding: 10px 15px;
+            margin-bottom: 10px;
+        }
+        .stats-head{
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+        .stats-count{
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <%- include('../partials/admin-nav') %>
+    <div class="app">
+        <div class="row">
+            <div class="col-12 col-md-3 col-lg-2  order-2 order-md-1">
+                <%- include('../partials/admin-sidebar') %>
+            </div>
+            <div class="col-12 col-lg-9  col-lg-10 order-1 order-md-2">
+                <div class="page-view-area">
+                    <div class="nav-adjust"></div>
+                    <div class="row">
+                        <div class="col-12 col-md-9">
+                            <div class="page-info-div">
+                                <h1 class="page-head">
+                                    Admin Dashboard
+                                </h1>
+                                <p class="mt-2">
+                                    <a class="text-decoration-none text-dark" href="/admin">Home</a>&nbsp;>
+                                    <a class="text-decoration-none text-info" href="#">Dashboard</a>
+                                </p>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <!-- <div class="row">
+                        <div class="col-12 col-sm-6 col-md-3 ">                         
+                            <div class="stat-box" style="background-color: rgb(152, 244, 244);">
+                                <p class="stats-head">Shops</p>
+                                <p class="stats-count"></p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3">                         
+                            <div class="stat-box" style="background-color: rgb(214, 242, 114);">
+                                <p class="stats-head">Vendors</p>
+                                <p class="stats-count"></p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3">                         
+                            <div class="stat-box" style="background-color: rgb(109, 245, 131);">
+                                <p class="stats-head">Salesmen</p>
+                                <p class="stats-count"></p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-3">                         
+                            <div class="stat-box" style="background-color: rgb(147, 131, 247);">
+                                <p class="stats-head">Routes</p>
+                                <p class="stats-count"></p>
+                            </div>
+                        </div>
+                    </div> -->
+                 
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h2 class="text-center">SOS CALLS</h2>
+                        </div>
+                        <div class="col-12 table-responsive mt-4">
+                            <table class="table">
+                                <tr>
+                                    <th>SOS ID</th>
+                                    <th>Location</th>
+
+                                </tr>
+                                <% sos.forEach((s)=>{%>
+                                    <tr>
+                                        <td><%=s.id%></td>
+                                        <td><a href="/admin/location?lat=<%=s.lat%>&lon=<%=s.lon%>"><button class="btn btn-outline-success">VIEW LOCATION</button></a></td>
+                                    </tr>
+                                <%})%>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script >
+        document.getElementById('si0').classList.add('sidebar-item-active')
+    </script>
+</body>
+</html>

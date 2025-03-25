@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/bcss/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/login.css">
+
+    <title>GOCABBY</title>
+    
+
+</head>
+<body>
+    <form action="/driver/login" method="post" id="loginForm">
+        <div class="container">
+          <div class="row mt-5" style="height: 90vh;">
+            
+            <div class="col-12 col-md-6 offset-md-3 mb-auto mt-auto">
+              <img src="/logo/white.svg" alt="" style="width: 60%;margin-left:20%;margin-bottom: 30px;">
+
+              <div class="login-body">
+                <p class="login-head text-center">Driver Login</p>
+
+                <div class="input-group mb-3 form-inp-box">
+                  <input type="number" class="inp-phone"  minlength="10" maxlength="10" placeholder="Enter 10 Digit Mobile Number "  id="phone" required name="phone">
+                  <div class="input-group-append">
+                      <button class="btn btn-primary custom-otp-button" onclick="sendOTP()" type="button" id="otpbutton" >GET OTP</button>
+                  </div>
+                </div>
+               
+                <input type="number" name="otp" class="form-inp" placeholder="OTP" id="otp" minlength="4" maxlength="4">
+                <p class="text-center text-danger" id="gangertext"><%=msg%></p>
+                <button type="submit" class="form-btn">LOGIN</button>
+                <p class="text-center"><a href="/driver/register">Create an Account</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>   
+      
+      <script>
+        function sendOTP() {
+            let phone = document.getElementById('phone').value
+            fetch(`/driver/otp?phone=${phone}`).then((r) => r.json()).then((d) => {
+                if (d.success) {
+                    document.getElementById('dangertext').innerText = ''
+                } else {
+                    console.log('error')
+                    document.getElementById('dangertext').innerText = `otp = ${d.otp} | ${d.msg}`
+                }
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+body{
+    background-color: #FFDF00;
+  }
+  .login-body{
+    background-color: #F0EFEF;
+    padding-top: 0px;
+    width: 100%;
+    padding-bottom: 20px;
+  }
+  .login-head{
+    padding-top: 20px;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  .form-inp{
+    width: 90%;
+    margin-left: 5%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    outline: none;
+    /* border-bottom: 1px solid #000; */
+    margin-bottom: 30px;
+    font-size: 18px;
+    padding: 8px;
+    background-color: #D9D9D9;
+  }
+  .form-inp-box{
+    width: 90%;
+    margin-left: 5%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    outline: none;
+    /* border-bottom: 1px solid #000; */
+    margin-bottom: 30px;
+    font-size: 18px;
+    background-color: #D9D9D9;
+    display: flex;
+  }
+  .inp-phone{
+    border: none;
+    outline: none;
+    padding: 8px;
+    flex-grow: 1;
+    background-color: transparent;
+  }
+  .btn-select{
+    background-color: #FFDF00;
+    margin: 10px 5%;
+    width: 90%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    font-weight: 600;
+  }
+  .btn-select:hover{
+    background-color: rgba(0,0,0,0.5);
+    color: #fff;
+  }
+  .form-btn{
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    margin-bottom: 30px;
+    font-size: 18px;
+    padding: 8px;
+    background-color: #0c6006;
+    color: #D9D9D9;
+  }
+  .form-btn:hover{
+    background-color: rgb(33, 106, 33);
+  }
